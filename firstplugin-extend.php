@@ -10,16 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function additional_greeting() {
-	echo '<pre>' . print_r( 'I am 24 years old web dude!!', true ) . '</pre>';
+	// echo '<pre>' . print_r( 'I am 24 years old web dude!!', true ) . '</pre>';
 }
 add_action( 'firstplugin_greeting_essays', 'additional_greeting' );
 
 
 function additional_countries_list( $countries_list, $arg2, $arg3 ) {
 	$new_countries = array_merge( $countries_list, array( 'America', 'Europe' ) );
-
-	echo '<pre>' . print_r( $new_countries, true ) . '</pre>';
-	echo '<pre>' . print_r( $arg2, true ) . '</pre>';
-	echo '<pre>' . print_r( $arg3, true ) . '</pre>';
 }
 add_filter( 'firstplugin_countries_list', 'additional_countries_list' , 10, 3);
