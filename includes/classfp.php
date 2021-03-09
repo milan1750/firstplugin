@@ -1,11 +1,20 @@
 <?php 
-
-
-
+namespace firstplugin\includes;
+use firstplugin\includes\activate;
+use firstplugin\includes\MaxAdds;
+use firstplugin\includes\MetaBoxes;
 
 class FirstPlugin {
+
     
     protected static $instance = null;
+
+    protected $metabox;
+    
+    protected $activate;
+
+    protected $maxadds;
+
     
     function __construct() {
         $this->init();
@@ -25,9 +34,10 @@ class FirstPlugin {
     }
 
     private function instanciate() {
-        new Activate();
-        new MetaBoxes();
-        new MaxAdds();
+        $this->activate = new Activate();
+        $this->maxadds = new MaxAdds();
+        $this->metabox = new MetaBoxes();
+        
     }
     
     public function includes() {

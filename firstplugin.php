@@ -1,5 +1,8 @@
 <?php 
 
+	namespace firstplugin;
+	use firstplugin\includes\FirstPlugin;
+
 	/**
 	 * Plugin Name:       First Plugin
 	 * Plugin URI:        https://example.com/firstplugin
@@ -15,7 +18,6 @@
 	 */
 
 	defined('ABSPATH') || exit;
-
 	if ( ! defined( 'FP_PLUGIN_FILE' ) ) {
 		define( 'FP_PLUGIN_FILE', __FILE__ );
 	}
@@ -28,7 +30,7 @@
 		define( 'FP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 	}
 
-	include (FP_PLUGIN_PATH. '/includes/class-fp.php');
+	include (FP_PLUGIN_PATH. 'includes/classfp.php');
 
 	function fp() {
 		return FirstPlugin::instance();

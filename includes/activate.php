@@ -1,12 +1,16 @@
 <?php
+namespace firstplugin\includes;
+
 defined( 'ABSPATH' ) || die ( 'Access Denied' );
 
+
 class Activate {
+
     function __construct() {
         register_activation_hook( FP_PLUGIN_FILE, array($this, 'fp_register_activation_hook' ));
         register_deactivation_hook( FP_PLUGIN_FILE, array($this, 'fp_register_deactivation_hook' ));
     }
-   
+
     function fp_register_activation_hook() {
         global $wpdb;
         $prefix = $wpdb->prefix;

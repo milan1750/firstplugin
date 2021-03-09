@@ -1,4 +1,5 @@
 <?php 
+    namespace firstplugin\includes;
 
     defined( 'ABSPATH' ) || die ( 'Access Denied' );
 
@@ -18,7 +19,7 @@
             $args = array(
                 'post_type' => 'fp_advertisement'
             );
-            $query = new WP_Query( $args );
+            $query = new \WP_Query( $args );
             if( $query->have_posts() ) { 
                 ?>
                 <select name="fp_select_add" id="fp_select_add" name="fp_select_add" value="<?php echo $fp_select_add_?>">

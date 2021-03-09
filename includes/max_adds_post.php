@@ -1,4 +1,6 @@
 <?php 
+namespace firstplugin\includes;
+
 
 defined( 'ABSPATH' ) || die ( 'Access Denied' );
  
