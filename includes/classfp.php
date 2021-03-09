@@ -16,11 +16,37 @@ class FirstPlugin {
     }
 
     private function init() {
-        add_action( 'wp_enqueue_scripts', array($this, 'fp_wp_enqueue_scripts') );
+        add_action( 'wp_enqueue_scripts', array( $this, 'fp_wp_enqueue_scripts' ) );
         $this->includes();
+        $this->my_actions();
+        do_action( 'fp_custom_action', array( 'Milan', 'Malla'), 'first action' );
         $this->instanciate();
     }
 
+    function my_actions() {
+        add_action( 'fp_custom_action', array($this, 'fp_cutsom_action_func'), 10, 2 );
+        add_filter('working_days', array($this, 'change_working_days'), 10, 2);
+        $working_days_first = array( 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' );
+        
+        
+        $data = apply_filters( 
+            'working_days', $working_days_first ,
+            'from_working_days' 
+        );
+        print_r( $data );
+    }
+
+    public function fp_cutsom_action_func( $array, $action ) {
+        // echo 'My name is '.$array[0].' '.$array[1].' and this is the '.$action;
+    }
+
+    public function change_working_days($days, $from) {
+        if($from == 'from_working_days') {
+            array_push($days, 'Saturday');
+        }
+        return $days;
+    }
+    
     function includes() {
         include (FP_PLUGIN_PATH .'/includes/activate.php');
         include (FP_PLUGIN_PATH .'/includes/max_adds_post.php');

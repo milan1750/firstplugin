@@ -31,9 +31,11 @@
 	}
 
 	include (FP_PLUGIN_PATH. 'includes/classfp.php');
-
+	
 	function fp() {
 		return FirstPlugin::instance();
 	}
+
+
 	$GLOBALS['pf'] = fp();
 

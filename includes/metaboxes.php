@@ -4,16 +4,21 @@
     defined( 'ABSPATH' ) || die ( 'Access Denied' );
 
     class MetaBoxes {
-        function __construct() {
-            add_action( 'admin_init', function() {
-                add_meta_box( 'fp_meta_box', 'Include Advertisement', array($this, 'fp_adds_metabox'), ['post', 'page'] );
-            });
-            add_action( 'save_post', array($this, 'fp_save_post' ));
-            add_filter( 'the_content', array($this, 'fp_custom_content' ));
 
+        function __construct() {
+            $this->init();
         }
-       
-    
+
+        function init() {
+            if ( is_admin() ) {                
+                add_action( 'admin_init', function() {
+                    add_meta_box( 'fp_meta_box', 'Include Advertisement', array($this, 'fp_adds_metabox'), ['post', 'page'] );
+                });
+                add_action( 'save_post', array($this, 'fp_save_post' ) );
+            }
+            add_filter( 'the_content', array($this, 'fp_custom_content' ) );
+        }
+
         function fp_adds_metabox( $post ) {
             $fp_select_add_ = get_post_meta( $post->ID, 'fp_select_add', true ); 
             $args = array(
@@ -32,14 +37,12 @@
                 <?php  
             }
         }
-    
-    
+        
         function fp_save_post( $post_id ) {  
-            if( array_key_exists( 'fp_select_add', $_POST ) ) {
-                update_post_meta( $post_id, 'fp_select_add', $_POST['fp_select_add'] );
+            if( array_key_exists( 'fp_select_add', $_POST ) && !empty( $_post['fp_selected_add'] ) ) {
+                update_post_meta( $post_id, 'fp_select_add', sanitize_text_field( $_POST['fp_select_add'] ) );
             }
         }
-    
     
         function fp_custom_content( $content ) {
             if( is_single() || is_home() || is_front_page() ) {
@@ -55,6 +58,4 @@
             return $content;
         }
     }
-
-    
 ?>
