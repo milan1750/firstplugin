@@ -1,20 +1,9 @@
 <?php 
 namespace firstplugin\includes;
-use firstplugin\includes\activate;
-use firstplugin\includes\MaxAdds;
-use firstplugin\includes\MetaBoxes;
-
 class FirstPlugin {
 
     
     protected static $instance = null;
-
-    protected $metabox;
-    
-    protected $activate;
-
-    protected $maxadds;
-
     
     function __construct() {
         $this->init();
@@ -33,17 +22,16 @@ class FirstPlugin {
         $this->instanciate();
     }
 
-    private function instanciate() {
-        $this->activate = new Activate();
-        $this->maxadds = new MaxAdds();
-        $this->metabox = new MetaBoxes();
-        
+    function includes() {
+        include (FP_PLUGIN_PATH .'/includes/activate.php');
+        include (FP_PLUGIN_PATH .'/includes/max_adds_post.php');
+        include (FP_PLUGIN_PATH .'/includes/metaboxes.php');
     }
-    
-    public function includes() {
-        include ( FP_PLUGIN_PATH. '/includes/activate.php' );
-        include ( FP_PLUGIN_PATH. '/includes/max_adds_post.php' );
-        include ( FP_PLUGIN_PATH. '/includes/metaboxes.php' );
+
+    function instanciate () {
+        new Activate();
+        new MaxAdds();
+        new MetaBoxes();
     }
 
     public function fp_wp_enqueue_scripts() {
