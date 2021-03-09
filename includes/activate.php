@@ -1,5 +1,5 @@
 <?php
-defined('ABSPATH') || die ('Access Denied');
+defined( 'ABSPATH' ) || die ( 'Access Denied' );
 
 register_activation_hook( FP_PLUGIN_FILE, 'fp_register_activation_hook' );
 register_deactivation_hook( FP_PLUGIN_FILE, 'fp_register_deactivation_hook' );

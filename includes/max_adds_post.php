@@ -1,11 +1,11 @@
 <?php 
 
-defined('ABSPATH') || die ('Access Denied');
+defined( 'ABSPATH' ) || die ( 'Access Denied' );
 
 add_action('init', 'fp_max_adds_post_type');
 
 function fp_max_adds_post_type() {
-    register_post_type('fp_advertisement', array(
+    register_post_type( 'fp_advertisement', array(
         'label' => 'Advertisement',
         'labels' => array(
             array(

@@ -18,4 +18,4 @@ add_action( 'firstplugin_greeting_essays', 'additional_greeting' );
 function additional_countries_list( $countries_list, $arg2, $arg3 ) {
 	$new_countries = array_merge( $countries_list, array( 'America', 'Europe' ) );
 }
-add_filter( 'firstplugin_countries_list', 'additional_countries_list' , 10, 3);
+add_filter( 'firstplugin_countries_list', 'additional_countries_list' , 10, 3 );
