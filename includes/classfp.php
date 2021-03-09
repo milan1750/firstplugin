@@ -2,7 +2,6 @@
 namespace firstplugin\includes;
 class FirstPlugin {
 
-    
     protected static $instance = null;
     
     function __construct() {

@@ -6,10 +6,10 @@ defined( 'ABSPATH' ) || die ( 'Access Denied' );
 class Activate {
     function __construct() {
         register_activation_hook( FP_PLUGIN_FILE, array($this, 'fp_register_activation_hook' ));
-        register_deactivation_hook( FP_PLUGIN_FILE, array($this, 'fp_register_deactivation_hook' ));
     }
 
     function fp_register_activation_hook() {
+
         global $wpdb;
         $prefix = $wpdb->prefix;
         $collate = $wpdb->get_charset_collate();
@@ -24,14 +24,5 @@ class Activate {
         ";
         require_once( ABSPATH. 'wp-admin/includes/upgrade.php' );
         dbDelta($sql);
-    }
-
-    public function fp_register_deactivation_hook() {
-        global $wpdb;
-        $prefix = $wpdb->prefix;
-        $sql = "
-            DROP TABLE IF EXISTS `{$prefix}first_plugin_max_adds`;
-        ";
-        $wpdb->query($sql);
     }
 }
