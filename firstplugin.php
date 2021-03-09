@@ -1,10 +1,19 @@
 <?php 
 	/**
-	 * Plugin Name: First Plugin
-	 * 
-	 * Other header tag research on self.
+	 * Plugin Name
+	 * @wordpress-plugin
+	 * Plugin Name:       First Plugin
+	 * Plugin URI:        https://example.com/firstplugin
+	 * Description:       Plugin for displaying custom adds on pages
+	 * Version:           1.0.0
+	 * Requires at least: 5.2
+	 * Requires PHP:      7.2
+	 * Author:            Milan Malla
+	 * Author URI:        https://example.com
+	 * Text Domain:       first-plugin
+	 * License:           GPL v2 or later
+	 * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
 	 */
-
 
 	defined('ABSPATH') || die ('Access Denied');
 
