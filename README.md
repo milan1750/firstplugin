@@ -1,7 +1,6 @@
 #First Plugin
 
-Branch  -- Master
-        -- OOP-VERSION
+Branch  -- Master/ OOP-VERSION
 
 1. Create advertisement using the Advertisement menu on Admin Navbar
 2. Create a post and select the advertisement from meta option
